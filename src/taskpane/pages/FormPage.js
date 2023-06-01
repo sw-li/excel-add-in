@@ -1,13 +1,14 @@
 import React from "react";
 import { useState } from "react";
+import addFTM from "../utils/addFTM";
 
 /* global console*/
 
 function FormPage() {
   const [object, setObject] = useState("");
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("new value:", object);
+    await addFTM();
     setObject("");
   };
 
