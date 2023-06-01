@@ -1,6 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import Navbar from "./components/Navbar";
+import MyNav from "./components/MyNav";
 import Progress from "./components/Progress";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
@@ -56,10 +56,10 @@ export default class App extends React.Component {
     // here we organise the app layout
     return (
       <div className="ms-welcome">
-        <Navbar />
+        <MyNav />
         <div>
           <Switch>
-            <Route exact path="/">
+            <Route exact path="/home">
               <HomePage></HomePage>
             </Route>
             <Route exact path="/form">
