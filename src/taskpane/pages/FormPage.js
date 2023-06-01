@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import addFTM from "../utils/addFTM";
+//import addFTM from "../utils/addFTM";
+import addLineToTable from "../utils/addLineToTable";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -12,8 +13,8 @@ function FormPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await addFTM({ id: ftmId, index: ftmIndex });
-
+    //await addFTM({ id: ftmId, index: ftmIndex });
+    await addLineToTable("FTMdata", { id: ftmId, index: ftmIndex });
     setFtmId("");
     setFtmIndex("");
   };
