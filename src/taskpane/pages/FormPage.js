@@ -1,22 +1,29 @@
 import React from "react";
 import { useState } from "react";
-//import addFTM from "../utils/addFTM";
+import addFTM from "../utils/addFTM";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 /* global console*/
 
 function FormPage() {
-  const [object, setObject] = useState("");
+  const [ftmId, setFtmId] = useState("");
+  const [ftmIndex, setFtmIndex] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("clicked");
-    //await addFTM();
-    setObject("");
+    await addFTM({ id: ftmId, index: ftmIndex });
+
+    setFtmId("");
+    setFtmIndex("");
   };
 
-  const handleTextInput = (e) => {
-    setObject(e.target.value);
+  const handleId = (e) => {
+    setFtmId(e.target.value);
+    console.log("input changed");
+  };
+  const handleIndex = (e) => {
+    setFtmIndex(e.target.value);
     console.log("input changed");
   };
 
@@ -24,16 +31,12 @@ function FormPage() {
     <div>
       <h1>Form Page</h1>
       <p>This is the Form page</p>
-      {/*       <form onSubmit={handleSubmit}>
-        <label>
-          Value <input type="text" value={object} onChange={handleTextInput} />
-        </label>
-        <button type="submit">Submit</button>
-      </form> */}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Object input</Form.Label> <br />
-          <Form.Control placeholder="Object input" value={object} onChange={handleTextInput} />
+          <Form.Label>ID</Form.Label> <br />
+          <Form.Control placeholder="ID FTM" value={ftmId} onChange={handleId} />
+          <Form.Label>INDICE</Form.Label> <br />
+          <Form.Control placeholder="INDICE" value={ftmIndex} onChange={handleIndex} />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
