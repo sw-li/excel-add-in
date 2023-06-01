@@ -32,6 +32,10 @@ module.exports = async (env, options) => {
     module: {
       rules: [
         {
+          test: /\.css$/,
+          use: ["style-loader", "css-loader"],
+        },
+        {
           test: /\.jsx?$/,
           use: [
             "react-hot-loader/webpack",

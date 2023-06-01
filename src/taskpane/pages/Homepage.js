@@ -1,7 +1,12 @@
 import React from "react";
 
 function HomePage() {
-  return <h1>Home Page</h1>;
+  return (
+    <div>
+      <h1>Note:</h1>
+      <p>This is the basic task pane add-in structure revisited from yo office</p>
+    </div>
+  );
 }
 
 export default HomePage;

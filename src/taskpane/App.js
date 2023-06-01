@@ -5,6 +5,7 @@ import Progress from "./components/Progress";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /* global console, Excel, require */
 
