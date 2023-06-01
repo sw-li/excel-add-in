@@ -4,7 +4,6 @@ import { initializeIcons } from "@fluentui/font-icons-mdl2";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { HashRouter as Router } from "react-router-dom";
-/* import { HashRouter as Router } from "react-router-dom"; */
 /* global document, Office, module, require */
 
 initializeIcons();

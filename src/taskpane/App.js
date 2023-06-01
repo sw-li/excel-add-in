@@ -16,7 +16,7 @@ export default class App extends React.Component {
     };
   }
 
-  // use the following sample to interacte with Excel. 
+  // use the following sample to interacte with Excel.
   click = async () => {
     try {
       await Excel.run(async (context) => {
@@ -51,7 +51,6 @@ export default class App extends React.Component {
         />
       );
     }
-
 
     // here we organise the app layout
     return (
