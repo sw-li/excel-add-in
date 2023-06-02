@@ -5,6 +5,7 @@ import Progress from "./components/Progress";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
+import FtmFormPage from "./pages/FtmFormPage";
 
 /* global require */
 
@@ -40,6 +41,9 @@ export default class App extends React.Component {
             </Route>
             <Route exact path="/form">
               <FormPage></FormPage>
+            </Route>
+            <Route exact path="/ftm">
+              <FtmFormPage></FtmFormPage>
             </Route>
           </Switch>
         </div>

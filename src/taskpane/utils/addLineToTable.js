@@ -12,9 +12,10 @@ async function addLineToTable(tableName, newLine) {
     headers.load("values");
     await context.sync();
     const headersOrder = headers.values[0];
+    console.log("heardersOrder:", headersOrder);
+    console.log("newLine data:", newLine);
     const mappedLine = headersOrder.map((header) => {
-      console.log("added one element to mappedLine:", newLine[header.toLowerCase()]);
-      return newLine[header.toLowerCase()];
+      return newLine[header];
     });
 
     console.log(mappedLine);

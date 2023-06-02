@@ -14,7 +14,7 @@ export default class MyNav extends React.Component {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#form">Form</Nav.Link>
+                <Nav.Link href="#ftm">FTM</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
