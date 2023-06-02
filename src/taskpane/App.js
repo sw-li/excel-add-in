@@ -5,9 +5,8 @@ import Progress from "./components/Progress";
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-/* global console, Excel, require */
+/* global require */
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -16,29 +15,6 @@ export default class App extends React.Component {
       listItems: [],
     };
   }
-
-  // use the following sample to interacte with Excel.
-  click = async () => {
-    try {
-      await Excel.run(async (context) => {
-        /**
-         * Insert your Excel code here
-         */
-        const range = context.workbook.getSelectedRange();
-
-        // Read the range address
-        range.load("address");
-
-        // Update the fill color
-        range.format.fill.color = "yellow";
-
-        await context.sync();
-        console.log(`The range address was ${range.address}.`);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   render() {
     const { title, isOfficeInitialized } = this.props;
