@@ -4,7 +4,7 @@ It's a inital test on office add-in with react front initiated with Yeoman gener
 
 ## Main modifications
 ---
-1. dpated to my personal preferences on files organization. 
+1. updated with my personal preferences on file organization. 
 
     * components folder stay unchanged
 
