@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import "./TableSelection.css";
 
-/* global Excel */
+/* global Excel*/
 
-function TestGetTables() {
+function GetTables(props) {
+  const { onTableChange } = props;
   const [tables, setTables] = useState([]);
   const [selectedTable, setSelectedTable] = useState("");
 
@@ -20,6 +21,7 @@ function TestGetTables() {
 
   const handleTableChange = (e) => {
     setSelectedTable(e.target.value);
+    onTableChange(e.target.value);
   };
 
   return (
@@ -42,4 +44,4 @@ function TestGetTables() {
   );
 }
 
-export default TestGetTables;
+export default GetTables;

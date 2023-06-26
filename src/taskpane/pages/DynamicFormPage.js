@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import addLineToTable from "../utils/addLineToTable";
 import PrintButton from "../components/PrintButton";
-
+import getTableColumns from "../utils/getTableColumns";
+import getInputType from "../utils/getInputType";
+import GetTables from "../components/GetTables";
 /* global console */
 
 function FtmFormPage() {
@@ -10,15 +12,6 @@ function FtmFormPage() {
   const [formFields, setFormFields] = useState([]);
 
   const printComponentRef = useRef(null);
-
-  const handleTableSelection = (e) => {
-    setSelectedTable(e.target.value);
-    // Fetch the columns of the selected table and set as form fields
-    // You can implement the logic to fetch columns based on the selected table
-    // and set the form fields accordingly
-    const columns = fetchTableColumns(e.target.value);
-    setFormFields(columns);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,39 +31,52 @@ function FtmFormPage() {
     e.target.reset();
   };
 
+  const handleTableChange = async (table) => {
+    setSelectedTable(table);
+    const columns = await getTableColumns(table);
+    // bug here, can't retrive columns names in an array instead of a promise
+    console.log("columns:", columns);
+    setFormFields(columns);
+  };
+
   return (
     <>
       <h1>Ajouter une nouvelle FTM</h1>
+      <GetTables onTableChange={handleTableChange}></GetTables>
 
       <Form style={{ padding: "20px" }} onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
-          <Form.Label>Sélectionner une table:</Form.Label>
-          <Form.Control as="select" onChange={handleTableSelection}>
-            <option value="">-- Select a table --</option>
-            {/* Render dropdown options with available tables */}
-            <option value="Table1">Table1</option>
-            <option value="Table2">Table2</option>
-            {/* Add more options based on the available tables */}
-          </Form.Control>
-        </Form.Group>
-
-        {selectedTable && (
+        {/* {selectedTable && (
           <div className="form-fields" ref={printComponentRef}>
-            {formFields.map((field) => (
-              <Form.Group key={field} className="mb-3">
-                <Form.Label>{field}</Form.Label>
-                <Form.Control type="text" name={field} placeholder={field} />
-              </Form.Group>
-            ))}
+            {formFields.map((column) => {
+              if (column.validationRule && column.validationRule.type === "list") {
+                const options = column.validationRule.formula1.split(",");
+                return (
+                  <Form.Group key={column.columnName} className="mb-3">
+                    <Form.Label>{column.columnName}</Form.Label>
+                    <Form.Select name={column.columnName}>
+                      {options.map((option, index) => (
+                        <option key={index} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  </Form.Group>
+                );
+              } else {
+                return (
+                  <Form.Group key={column.columnName} className="mb-3">
+                    <Form.Label>{column.columnName}</Form.Label>
+                    <Form.Control
+                      type={getInputType(column.dataType)}
+                      name={column.columnName}
+                      placeholder={column.columnName}
+                    />
+                  </Form.Group>
+                );
+              }
+            })}
           </div>
-        )}
-
-        <div className="buttons">
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-          {selectedTable && <PrintButton targetRef={printComponentRef} />}
-        </div>
+        )} */}
       </Form>
     </>
   );

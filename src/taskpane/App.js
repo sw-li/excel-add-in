@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import MyNav from "./components/MyNav";
 import Progress from "./components/Progress";
 import { Switch, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
 import FormPage from "./pages/FormPage";
 import FtmFormPage from "./pages/FtmFormPage";
+import DynamicFormPage from "./pages/DynamicFormPage";
 
 /* global require */
 
@@ -37,7 +37,7 @@ export default class App extends React.Component {
         <div>
           <Switch>
             <Route exact path="/home">
-              <HomePage></HomePage>
+              <DynamicFormPage />
             </Route>
             <Route exact path="/form">
               <FormPage></FormPage>
