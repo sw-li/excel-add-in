@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import addLineToTable from "../utils/addLineToTable";
+import PrintButton from "../components/PrintButton";
+
 /* global console*/
 
 function FtmFormPage() {
@@ -20,6 +22,8 @@ function FtmFormPage() {
   const [ftmSummaryImpact, setFtmSummaryImpact] = useState(false);
   const [ftmFollowUpObservations, setFtmFollowUpObservations] = useState("");
   const [ftmEstimatedCost, setFtmEstimatedCost] = useState(0);
+
+  const printComponentRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +74,7 @@ function FtmFormPage() {
       <h1>Ajouter une nouvelle FTM</h1>
 
       <Form style={{ padding: "20px" }} onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3" ref={printComponentRef}>
           <Form.Label>N° d'ordre FTM:</Form.Label>
           <Form.Control
             type="text"
@@ -186,10 +190,12 @@ function FtmFormPage() {
             onChange={(e) => setFtmEstimatedCost(parseFloat(e.target.value))}
           />
         </Form.Group>
-
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <div className={"buttons"}>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+          <PrintButton targetRef={printComponentRef}></PrintButton>
+        </div>
       </Form>
     </>
   );
