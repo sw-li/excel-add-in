@@ -42,9 +42,9 @@ export default class App extends React.Component {
             <Route exact path="/form">
               <FormPage></FormPage>
             </Route>
-            <Route exact path="/ftm">
+{/*             <Route exact path="/ftm">
               <FtmFormPage></FtmFormPage>
-            </Route>
+            </Route> */}
           </Switch>
         </div>
       </div>

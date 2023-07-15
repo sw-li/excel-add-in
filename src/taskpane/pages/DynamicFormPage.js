@@ -44,8 +44,8 @@ function FtmFormPage() {
       <h1>Ajouter une nouvelle FTM</h1>
       <GetTables onTableChange={handleTableChange}></GetTables>
 
-      <Form style={{ padding: "20px" }} onSubmit={handleSubmit}>
-        {/* {selectedTable && (
+      {/* <Form style={{ padding: "20px" }} onSubmit={handleSubmit}>
+        {selectedTable && (
           <div className="form-fields" ref={printComponentRef}>
             {formFields.map((column) => {
               if (column.validationRule && column.validationRule.type === "list") {
@@ -76,7 +76,20 @@ function FtmFormPage() {
               }
             })}
           </div>
-        )} */}
+        )}
+      </Form> */}
+
+      <Form style={{ padding: "20px" }} onSubmit={handleSubmit}>
+        {selectedTable !== "" ? (
+          <div className="form-fields" ref={printComponentRef}>
+            <h1>A table is selected </h1>
+            {formFields.map((column) => {
+              return <h2> {column} </h2>;
+            })}
+          </div>
+        ) : (
+          <h1 style={{ color: "grey" }}>Selected table will show up here</h1>
+        )}
       </Form>
     </>
   );
