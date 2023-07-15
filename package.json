@@ -26,11 +26,12 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@fluentui/font-icons-mdl2": "^8.5.22",
+    "@fluentui/react": "^8.110.4",
     "axios": "^1.4.0",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.3.0",
     "core-js": "^3.9.1",
-    "dotenv": "^16.1.4",
     "es6-promise": "^4.2.8",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
